@@ -180,3 +180,29 @@ function deleteItem(deleteid) {
   // toplamı güncelle
   calculateTotal();
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("registrationForm");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = form.elements["name"].value;
+    const email = form.elements["email"].value;
+    const password = form.elements["password"].value;
+
+    if (name === "" || email === "" || password === "") {
+      message.textContent = "Lütfen tüm alanları doldurun.";
+      return;
+    }
+
+    if (password.length < 6) {
+      message.textContent = "Parolanız en az 6 karakter olmalıdır.";
+      return;
+    }
+
+    // Burada sunucuya kayıt işlemi yapılabilir, örnek olarak bir mesaj gösteriliyor.
+    message.textContent = "Başarıyla kaydoldunuz!";
+  });
+});
